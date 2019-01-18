@@ -48,8 +48,8 @@ makeLockImage() {
 
   # blend overlay image w. pixellated desktop background
   import -silent -window root bmp:- | \
-    mogrify -scale 10% bmp:- | \
-    mogrify -scale 1000% bmp:- | \
+    mogrify -scale 5% bmp:- | \
+    mogrify -scale 2000% bmp:- | \
     composite -gravity South -geometry -20x1200 ~/Pictures/lockscreen.png bmp:- png:- \
     >> /tmp/i3screen_.png
 }
