@@ -44,11 +44,13 @@ MONITOR_IDLE_TIMEOUT=1200
 # lock image helper
 makeLockImage() {
   # this takes a while... indicate things are moving
-  notify-send --icon=gtk-info "Locking system..." "Enter password and press [enter] to unlock"
-  # blend blurred image w. desktop background
-  import -silent -window root png:- | \
-  mogrify -blur 0x16 png:- | \
-  composite -gravity South -geometry -20x1200 ~/Pictures/lockscreen.png png:- png:- \
+  # notify-send --icon=gtk-info "Locking system..." "Enter password and press [enter] to unlock"
+
+  # blend overlay image w. pixellated desktop background
+  import -silent -window root bmp:- | \
+    mogrify -scale 10% bmp:- | \
+    mogrify -scale 1000% bmp:- | \
+    composite -gravity South -geometry -20x1200 ~/Pictures/lockscreen.png bmp:- png:- \
     >> /tmp/i3screen_.png
 }
 
