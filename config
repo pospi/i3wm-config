@@ -251,8 +251,7 @@ mode "$mode_launcher" {
   bindsym 2 exec nautilus, mode "default"
   bindsym 3 exec subl, mode "default"
   bindsym 4 exec firefox, mode "default"
-
-  bindsym 7 exec patchbay, mode "default"
+  bindsym 5 exec rhythmbox, mode "default"
 
   # app groups
   bindsym C \
