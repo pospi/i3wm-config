@@ -18,17 +18,18 @@
 #     get window props for use with `assign` & `xrandr`
 # xrandr --current
 #     get window IDs for use with `output`, `assign` etc
+# xev
+#     determine symbol names for X11 inputs
 # i3-save-tree --workspace 8 > ~/.config/i3/workspace-comms.json
 #     save layout trees for automating restore
 #
 # :TODO:
 #
+# - a desktop & wallpaper
 # - cpufreq in tray
 # - https://github.com/acrisci/i3ipc-python/blob/master/examples/disable-standby-fs.py
-# - shutdown
-# - set monitor inputs when disconnected / connected
-# - lockscreen on resume from suspend
 # - lockscreen after timeout
+# - suspend after timeout
 #
 
 set $mod Mod4
