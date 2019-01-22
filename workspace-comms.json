@@ -1,0 +1,201 @@
+{
+    "border": "normal",
+    "floating": "auto_off",
+    "layout": "splith",
+    "percent": 1,
+    "type": "con",
+    "nodes": [
+        {
+            "border": "normal",
+            "floating": "auto_off",
+            "layout": "splith",
+            "percent": 1,
+            "type": "con",
+            "nodes": [
+                {
+                    "border": "normal",
+                    "floating": "auto_off",
+                    "layout": "splith",
+                    "percent": 0.657552083333333,
+                    "type": "con",
+                    "nodes": [
+                        {
+                            "border": "normal",
+                            "floating": "auto_off",
+                            "layout": "splitv",
+                            "percent": 0.415049504950495,
+                            "type": "con",
+                            "nodes": [
+                                {
+                                    "border": "normal",
+                                    "current_border_width": 4,
+                                    "floating": "auto_off",
+                                    "geometry": {
+                                       "height": 1061,
+                                       "width": 1298,
+                                       "x": 1284,
+                                       "y": 26
+                                    },
+                                    "name": "Signal",
+                                    "percent": 0.5,
+                                    "swallows": [
+                                       {
+                                       "class": "^Signal$"
+                                       }
+                                    ],
+                                    "type": "con"
+                                },
+                                {
+                                    "border": "normal",
+                                    "current_border_width": 4,
+                                    "floating": "auto_off",
+                                    "geometry": {
+                                       "height": 756,
+                                       "width": 940,
+                                       "x": 2,
+                                       "y": 573
+                                    },
+                                    "name": "Discord",
+                                    "percent": 0.5,
+                                    "swallows": [
+                                       {
+                                       "class": "^discord$",
+                                       "title": "Discord$"
+                                       }
+                                    ],
+                                    "type": "con"
+                                }
+                            ]
+                        },
+                        {
+                            "border": "normal",
+                            "floating": "auto_off",
+                            "layout": "tabbed",
+                            "percent": 0.584950495049505,
+                            "type": "con",
+                            "nodes": [
+                                {
+                                    "border": "normal",
+                                    "current_border_width": 4,
+                                    "floating": "auto_off",
+                                    "geometry": {
+                                       "height": 2099,
+                                       "width": 1246,
+                                       "x": 2590,
+                                       "y": 26
+                                    },
+                                    "name": "Slack",
+                                    "percent": 0.333333333333333,
+                                    "swallows": [
+                                       {
+                                       "class": "^Slack$",
+                                       "title": "^Slack -"
+                                       }
+                                    ],
+                                    "type": "con"
+                                },
+                                {
+                                    "border": "normal",
+                                    "current_border_width": 4,
+                                    "floating": "auto_off",
+                                    "geometry": {
+                                       "height": 609,
+                                       "width": 868,
+                                       "x": 2970,
+                                       "y": 16
+                                    },
+                                    "name": "Patchbay",
+                                    "percent": 0.333333333333333,
+                                    "swallows": [
+                                       {
+                                       "class": "^Electron$",
+                                       "title": "^Patchbay$"
+                                       }
+                                    ],
+                                    "type": "con"
+                                },
+                                {
+                                    "border": "normal",
+                                    "floating": "auto_off",
+                                    "layout": "splitv",
+                                    "percent": 0.333333333333333,
+                                    "type": "con",
+                                    "nodes": [
+                                        {
+                                            "border": "normal",
+                                            "current_border_width": 4,
+                                            "floating": "auto_off",
+                                            "geometry": {
+                                               "height": 946,
+                                               "width": 1334,
+                                               "x": 0,
+                                               "y": 0
+                                            },
+                                            "name": "term",
+                                            "percent": 1,
+                                            "swallows": [
+                                               {
+                                               "class": "^Gnome\\-terminal$"
+                                               }
+                                            ],
+                                            "type": "con"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "border": "normal",
+                    "floating": "auto_off",
+                    "layout": "tabbed",
+                    "percent": 0.342447916666667,
+                    "type": "con",
+                    "nodes": [
+                        {
+                            "border": "normal",
+                            "current_border_width": 4,
+                            "floating": "auto_off",
+                            "geometry": {
+                               "height": 2104,
+                               "width": 1279,
+                               "x": 1,
+                               "y": 24
+                            },
+                            "name": "Mattermost",
+                            "percent": 0.5,
+                            "swallows": [
+                               {
+                               "class": "^Mattermost$"
+                               }
+                            ],
+                            "type": "con"
+                        },
+                        {
+                            "border": "normal",
+                            "current_border_width": 4,
+                            "floating": "auto_off",
+                            "geometry": {
+                               "height": 2099,
+                               "width": 1272,
+                               "x": 4,
+                               "y": 26
+                            },
+                            "name": "Telegram",
+                            "percent": 0.5,
+                            "swallows": [
+                               {
+                               "class": "^TelegramDesktop$",
+                               "title": "^Telegram \\("
+                               }
+                            ],
+                            "type": "con"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+
