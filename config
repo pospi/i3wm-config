@@ -265,7 +265,6 @@ mode "$mode_launcher" {
     exec slack; \
     exec $HOME/Downloads/Telegram/Telegram; \
     exec /opt/Mattermost/mattermost-desktop; \
-    exec discord; \
     mode "default"
 }
 
