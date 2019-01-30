@@ -298,11 +298,12 @@ exec --no-startup-id $HOME/.config/i3/auto-monitorconf.sh
 exec_always --no-startup-id xautolock -exit; sleep 1; xautolock -notify 20 -notifier notify-send -time $systemLockTimeout -locker "systemctl suspend -i" -detectsleep
 exec --no-startup-id $HOME/.config/i3/i3-fs-standby-daemon.py
 
+# handles X input reassignments when certain devices detected
+exec --no-startup-id $HOME/.config/i3/xinput-poll-daemon.sh
+
 # Startup apps
 exec --no-startup-id nm-applet
 exec --no-startup-id encfs-manager
 exec --no-startup-id megasync
 exec --no-startup-id /opt/extras.ubuntu.com/indicator-brightness/indicator-brightness
 exec --no-startup-id /opt/xflux -l -27.466632 -g 153.022041 -k 4200
-# handles X input reassignments when certain devices detected
-exec --no-startup-id $HOME/bin/hardware/xinput-poll-daemon.sh
