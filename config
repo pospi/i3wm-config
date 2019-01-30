@@ -25,8 +25,8 @@
 #
 # :TODO:
 #
+# - suspend on laptop lid close
 # - a desktop & wallpaper
-# - https://github.com/acrisci/i3ipc-python/blob/master/examples/disable-standby-fs.py
 #
 
 set $systemLockTimeout 20
@@ -296,6 +296,7 @@ bar {
 exec --no-startup-id $HOME/.config/i3/auto-monitorconf.sh
 
 exec_always --no-startup-id xautolock -exit; sleep 1; xautolock -notify 20 -notifier notify-send -time $systemLockTimeout -locker "systemctl suspend -i" -detectsleep
+exec --no-startup-id $HOME/.config/i3/i3-fs-standby-daemon.py
 
 # Startup apps
 exec --no-startup-id nm-applet
@@ -303,4 +304,5 @@ exec --no-startup-id encfs-manager
 exec --no-startup-id megasync
 exec --no-startup-id /opt/extras.ubuntu.com/indicator-brightness/indicator-brightness
 exec --no-startup-id /opt/xflux -l -27.466632 -g 153.022041 -k 4200
+# handles X input reassignments when certain devices detected
 exec --no-startup-id $HOME/bin/hardware/xinput-poll-daemon.sh
