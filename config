@@ -72,10 +72,12 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # System buttons
+# note: does not work on Oryx Pro hardware, use tray indicator-brightness instead
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20
 #bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh
 # note: XF86Display does not seem to work on this keyboard
+bindsym XF86Display exec --no-startup-id $HOME/.config/i3/auto-monitorconf.sh
 bindsym $mod+F7 exec --no-startup-id $HOME/.config/i3/auto-monitorconf.sh
 
 # Screenshot function
@@ -297,5 +299,6 @@ exec --no-startup-id $HOME/.config/i3/auto-monitorconf.sh
 # Startup apps
 exec --no-startup-id nm-applet
 exec --no-startup-id megasync
+exec --no-startup-id /opt/extras.ubuntu.com/indicator-brightness/indicator-brightness
 exec --no-startup-id /opt/xflux -l -27.466632 -g 153.022041 -k 4200
 exec --no-startup-id $HOME/bin/hardware/xinput-poll-daemon.sh
