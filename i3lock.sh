@@ -39,7 +39,7 @@
 #
 ##
 
-MONITOR_IDLE_TIMEOUT=1200
+MONITOR_IDLE_TIMEOUT=900
 
 # lock image helper
 makeLockImage() {

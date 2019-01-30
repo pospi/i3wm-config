@@ -27,9 +27,9 @@
 #
 # - a desktop & wallpaper
 # - https://github.com/acrisci/i3ipc-python/blob/master/examples/disable-standby-fs.py
-# - lockscreen after timeout
-# - suspend after timeout
 #
+
+set $systemLockTimeout 20
 
 set $mod Mod4
 set $wmod Ctrl+Mod1
@@ -294,6 +294,8 @@ bar {
 #   WantedBy=suspend.target
 #
 exec --no-startup-id $HOME/.config/i3/auto-monitorconf.sh
+
+exec_always --no-startup-id xautolock -exit; sleep 1; xautolock -notify 20 -notifier notify-send -time $systemLockTimeout -locker "systemctl suspend -i" -detectsleep
 
 # Startup apps
 exec --no-startup-id nm-applet
