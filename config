@@ -220,6 +220,7 @@ mode "resize" {
 
 # automated window floating by class
 for_window [class="floatingWin"] floating enable move right 500px,move down 300px
+for_window [window_role="gnome-calculator"] floating enable
 
 # system power & lock commands
 set $mode_system System (p) perfmode, (l) lock, (e) logout, (s) suspend, (r) reboot, (Shift+s) shutdown
