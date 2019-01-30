@@ -11,6 +11,7 @@
 # Things that aren't documented:
 #
 # - Screen timeout works, somehow. May be residual config from compiz or unity.
+# - Same for suspend on lid close- also seems to work out of the box.
 #
 # HELPFUL COMMANDS
 #==================
@@ -25,7 +26,6 @@
 #
 # :TODO:
 #
-# - suspend on laptop lid close
 # - a desktop & wallpaper
 #
 
