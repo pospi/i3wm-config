@@ -296,4 +296,4 @@ exec --no-startup-id nm-applet
 exec --no-startup-id encfs-manager
 exec --no-startup-id megasync
 exec --no-startup-id sleep 5; /opt/extras.ubuntu.com/indicator-brightness/indicator-brightness
-exec --no-startup-id /opt/xflux -l -27.466632 -g 153.022041 -k 4200
+exec --no-startup-id redshift-gtk
