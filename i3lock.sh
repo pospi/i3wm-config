@@ -50,6 +50,18 @@ revert() {
 trap revert HUP INT TERM
 
 case "$1" in
+  # triggered by xautolock before trying to suspend
+  notify)
+    if isMediaPlaying; then
+      # restart xautolock to reset the timer if media is active
+      echo "Media is playing! Suspend will not activate."
+      xautolock -restart
+    else
+      # :NOTE: time needs to be synced with -notify param to xautolock (see config)
+      notify-send -u critical -t 19750 -- 'Locking in 20 seconds...'
+    fi
+  ;;
+
   # triggered by xautolock to activate suspend
   auto)
     if isMediaPlaying; then
