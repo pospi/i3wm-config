@@ -19,7 +19,7 @@
 - Window tabbing, program runner & command execution via [rofi](https://github.com/DaveDavenport/rofi)
 - Starts relevant utility apps (eg. Gnome calculator) in floating mode
 - Fancy lock screen (pixellated desktop with overlay)
-- Automatic suspend:
+- Automatic lock & suspend:
     - Does not trigger when apps are fullscreen, which takes care of most video playback situations
     - Does not trigger when music or other media is playing (detection implemented via PulseAudio)
 - Automatic monitor profile configuration via `autorandr` (mod+F7 binding as final resort)
