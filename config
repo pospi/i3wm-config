@@ -295,5 +295,5 @@ exec --no-startup-id $HOME/.config/i3/xinput-poll-daemon.sh
 exec --no-startup-id nm-applet
 exec --no-startup-id encfs-manager
 exec --no-startup-id megasync
-exec --no-startup-id /opt/extras.ubuntu.com/indicator-brightness/indicator-brightness
+exec --no-startup-id sleep 5; /opt/extras.ubuntu.com/indicator-brightness/indicator-brightness
 exec --no-startup-id /opt/xflux -l -27.466632 -g 153.022041 -k 4200
