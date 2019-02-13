@@ -1,5 +1,14 @@
 # Complete i3wm configuration
 
+<!-- MarkdownTOC -->
+
+- [Features](#features)
+- [Setup](#setup)
+    - [systemctl services](#systemctl-services)
+- [License](#license)
+
+<!-- /MarkdownTOC -->
+
 ## Features
 
 - Noteworthy key bindings:
@@ -51,7 +60,7 @@
 
 You also need to put an image at `~/Pictures/lockscreen.png`, which will be overlaid at the bottom centre of your screen when the PC is locked.
 
-## systemctl services
+### systemctl services
 
 It's far easier to wire everything into `systemctl` than it is to try to drive things the other way around. You will need these service files installed into `/etc/systemd/system/`. Replace `/home/pospi` with the path to your own homedir.
 
