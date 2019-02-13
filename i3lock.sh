@@ -30,6 +30,16 @@ enableMonitorPowerSaving() {
   xset +dpms dpms 0 5 20
 }
 
+# detect if media is playing
+isMediaPlaying() {
+  mediaStatus=$(pacmd list-sink-inputs | grep state: | cut -d " " -f 2)
+  if [[ $mediaStatus == "RUNNING" ]]; then
+    return 0
+  else
+    return 1
+  fi
+}
+
 ################################################################################
 
 # setup to restore monitor DPMS settings after exit
@@ -42,9 +52,7 @@ trap revert HUP INT TERM
 case "$1" in
   # triggered by xautolock to activate suspend
   auto)
-    # detect if media is playing
-    mediaStatus=$(pacmd list-sink-inputs | grep state: | cut -d " " -f 2)
-    if [[ $mediaStatus == "RUNNING" ]]; then
+    if isMediaPlaying; then
       # restart xautolock to reset the timer if media is active
       echo "Media is playing! Suspend not activated."
       xautolock -restart
