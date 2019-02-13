@@ -1,5 +1,31 @@
 # Complete i3wm configuration
 
+## Features
+
+- Noteworthy key bindings:
+    - Volume controls with audible feedback
+    - Media keys via [playerctl](https://github.com/acrisci/playerctl)
+    - Layout and boot app workspaces with a single keypress *(see "(C)ommunications" in config)*
+    - Move windows left/right between workspaces and follow them to their destination
+- Window tabbing, program runner & command execution via [rofi](https://github.com/DaveDavenport/rofi)
+- Starts relevant utility apps (eg. Gnome calculator) in floating mode
+- Fancy lock screen (pixellated desktop with overlay)
+- Automatic suspend:
+    - Does not trigger when apps are fullscreen, which takes care of most video playback situations
+    - Does not trigger when music or other media is playing (detection implemented via PulseAudio)
+- Automatic monitor profile configuration via `autorandr` (mod+F7 binding as final resort)
+- Management of screen backlight via hotkeys or tray icon
+- Script hooks for rebinding Xinput device buttons & keys when inserted
+- Tray items:
+    - CPU performance mode
+    - VPN connection status
+    - Standard i3status battery level, network connection info, date / time & app icons
+- Background processes: *(see end of `config`)*
+    - Ubuntu network manager tray UI
+    - [EncFS folder manager](https://moritzmolch.com/apps/mencfsm/index.html)
+    - [MEGA](https://mega.nz) file sync
+    - [Redshift](http://jonls.dk/redshift/) colour temperature manager
+
 ## Setup
     
     # find a tempdir
@@ -22,6 +48,8 @@
     pip install i3ipc
     wget https://github.com/acrisci/playerctl/releases/download/v2.0.1/playerctl-2.0.1_amd64.deb
     sudo dpkg -i playerctl-2.0.1_amd64.deb
+
+You also need to put an image at `~/Pictures/lockscreen.png`, which will be overlaid at the bottom centre of your screen when the PC is locked.
 
 ## systemctl services
 
