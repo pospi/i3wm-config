@@ -25,7 +25,8 @@
 #
 # :TODO:
 #
-# - prevent screen off & auto-suspend when playing music
+# - does screen actually go off, or just goes dark?
+# - take lockscreen when screen goes off so resume image works
 # - a desktop & wallpaper
 #
 
