@@ -40,6 +40,21 @@ revert() {
 trap revert HUP INT TERM
 
 case "$1" in
+  # triggered by xautolock to activate suspend
+  auto)
+    # detect if media is playing
+    mediaStatus=$(pacmd list-sink-inputs | grep state: | cut -d " " -f 2)
+    if [[ $mediaStatus == "RUNNING" ]]; then
+      # restart xautolock to reset the timer if media is active
+      echo "Media is playing! Suspend not activated."
+      xautolock -restart
+    else
+      # suspend the machine if nothing is active
+      systemctl suspend -i
+    fi
+  ;;
+
+  # Run by systemd when suspending (either manually, or triggered by xautolock)
   suspend)
     # create lock image first (interrupts suspend tasks)
     makeLockImage
@@ -47,6 +62,8 @@ case "$1" in
     enableMonitorPowerSaving
     i3lock -i /tmp/i3screen_.png
   ;;
+
+  # Run by systemd when resuming
   resume)
     # wait a bit before starting on resume, so that i3lock can get a handle on the window
     sleep 1
@@ -58,8 +75,10 @@ case "$1" in
       i3lock -n -c 330033
     fi
   ;;
+
+  # Normal usage (triggered manually)
   *)
-    # under normal usage (triggered by script), run non-forked so this process can watch exit to cleanup
+    # run non-forked so this process can watch exit to cleanup
     makeLockImage
     enableMonitorPowerSaving
     i3lock -n -i /tmp/i3screen_.png
