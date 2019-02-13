@@ -9,6 +9,7 @@
 #
 ##
 
+# :DUPE: monitor-timeout-delay
 MONITOR_IDLE_TIMEOUT=900
 
 # lock image helper
@@ -34,7 +35,7 @@ enableMonitorPowerSaving() {
 # setup to restore monitor DPMS settings after exit
 revert() {
   rm /tmp/i3screen_*.png
-  xset dpms 0 0 $MONITOR_IDLE_TIMEOUT
+  xset +dpms dpms 0 0 $MONITOR_IDLE_TIMEOUT
 }
 trap revert HUP INT TERM
 
