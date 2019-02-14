@@ -109,11 +109,14 @@ case "$1" in
     # wait a bit before starting on resume, so that i3lock can get a handle on the window
     sleep 1
     enableMonitorPowerSaving
-    # only use the lock image if it's already there
-    if [[ -f /tmp/i3screen_.png ]]; then
-      i3lock -n -i /tmp/i3screen_.png
-    else
-      i3lock -n -c 330033
+    # only run the lockscreen if the process hasn't persisted from before suspend
+    if needToRunLock; then
+      # only use the lock image if it's there- should never happen, but just in case.
+      if [[ -f /tmp/i3screen_.png ]]; then
+        i3lock -n -i /tmp/i3screen_.png
+      else
+        i3lock -n -c 330033
+      fi
     fi
   ;;
 
