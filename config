@@ -31,8 +31,14 @@
 #
 
 # :DUPE: monitor-timeout-delay
-set $monitorDisableTimeout 900 # seconds
-set $systemLockTimeout 20 # minutes
+set $monitorDisableTimeout 900
+# (seconds)
+
+set $systemLockPrepareTimeout 14
+# (minutes- slightly less than above- for preparing lock resources)
+
+set $systemLockTimeout 11
+# (minutes- runs after prepare, so == 25 mins)
 
 set $mod Mod4
 set $wmod Ctrl+Mod1
