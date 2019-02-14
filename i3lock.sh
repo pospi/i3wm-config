@@ -35,9 +35,17 @@ isMediaPlaying() {
   mediaStatus=$(pacmd list-sink-inputs | grep state: | cut -d " " -f 2)
   if [[ $mediaStatus == "RUNNING" ]]; then
     return 0
-  else
-    return 1
   fi
+  return 1
+}
+
+# detect if lockscreen is already active
+needToRunLock() {
+  lsStatus=$(ps cax | grep i3lock)
+  if [[ -z $lsStatus ]]; then
+    return 0
+  fi
+  return 1
 }
 
 ################################################################################
@@ -53,34 +61,47 @@ case "$1" in
   # triggered by xautolock before trying to suspend
   notify)
     if isMediaPlaying; then
-      # restart xautolock to reset the timer if media is active
-      echo "Media is playing! Suspend will not activate."
       xautolock -restart
-    else
-      # :NOTE: time needs to be synced with -notify param to xautolock (see config)
-      notify-send -u critical -t 19750 -- 'Locking in 20 seconds...'
+      exit 1
     fi
+
+    # :NOTE: time needs to be synced with -notify param to xautolock (see config)
+    notify-send -u critical -t 19750 -- 'Warning! System will suspend shortly after locking...'
   ;;
 
-  # triggered by xautolock to activate suspend
+  # triggered by xautolock *BEFORE* DPMS activates and turns the monitor off (which breaks screenshotting)
+  prepare)
+    if isMediaPlaying; then
+      xautolock -restart
+      exit 1
+    fi
+
+    # activate lock now, so lock shows for a short duration before screen goes off
+    makeLockImage
+    i3lock -i /tmp/i3screen_.png
+  ;;
+
+  # triggered by xautolock to activate suspend (DPMS will have disabled monitor previously)
   auto)
     if isMediaPlaying; then
-      # restart xautolock to reset the timer if media is active
-      echo "Media is playing! Suspend not activated."
       xautolock -restart
-    else
-      # suspend the machine if nothing is active
-      systemctl suspend -i
+      exit 1
     fi
+
+    # suspend the machine (which triggers next step)
+    systemctl suspend -i
   ;;
 
   # Run by systemd when suspending (either manually, or triggered by xautolock)
   suspend)
-    # create lock image first (interrupts suspend tasks)
-    makeLockImage
-    # now we have image, run i3lock in forked mode
-    enableMonitorPowerSaving
-    i3lock -i /tmp/i3screen_.png
+    # only run the lockscreen if it hasn't already been activated by xautolock
+    if needToRunLock; then
+      # create lock image first (interrupts suspend tasks, so needs to be fast)
+      makeLockImage
+      # now we have image, run i3lock in forked mode
+      enableMonitorPowerSaving
+      i3lock -i /tmp/i3screen_.png
+    fi
   ;;
 
   # Run by systemd when resuming
