@@ -51,7 +51,8 @@
 
     # install main packages
     sudo apt update
-    sudo apt install -y i3 rofi sox cpufrequtils xterm autorandr xautolock indicator-brightness
+    sudo apt install -y i3 rofi sox cpufrequtils xterm xautolock indicator-brightness
+    sudo pip install autorandr
 
     # other dependencies
     pip install i3ipc
