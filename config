@@ -105,7 +105,7 @@ bindsym $mod+F4 kill
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 bindsym $mod+Tab exec --no-startup-id rofi -show window
-bindsym $mod+d exec --no-startup-id rofi -show drun
+bindsym $mod+d exec --no-startup-id rofi -modi drun -show drun
 bindsym $mod+c exec --no-startup-id rofi -show run
 
 # change focus
