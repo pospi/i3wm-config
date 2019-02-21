@@ -67,10 +67,9 @@ force_display_urgency_hint 1000 ms
 floating_modifier $mod
 
 # Media keys
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -c 0 -q set Master 2dB+ unmute; exec play -q /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer -c 0 -q set Master 2dB- unmute; exec play -q /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
-#bindsym XF86AudioMute exec --no-startup-id amixer -q set Master toggle
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 1 toggle; exec play -q /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && killall -SIGUSR1 i3status; exec play -q /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && killall -SIGUSR1 i3status; exec play -q /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle; exec play -q /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
 #bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%; exec play -q /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
 #bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%; exec play -q /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
 bindsym XF86AudioPlay exec playerctl play-pause
