@@ -284,6 +284,9 @@ bar {
   position bottom
 }
 
+# Load up a compositor so that WebGL & overlay apps (eg. Peek GIF recorder) work
+exec_always --no-startup-id compton --opacity-rule '100:window_type = "dock" && class_g = "i3bar"' --config $HOME/.config/i3/compton.conf -b
+
 # Init monitor config.
 # Also requires a systemd service in case monitors change while off.
 exec --no-startup-id $HOME/.config/i3/auto-monitorconf.sh
