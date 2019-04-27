@@ -298,7 +298,7 @@ exec --no-startup-id $HOME/.config/i3/auto-monitorconf.sh
 exec --no-startup-id xset +dpms dpms 0 0 $monitorDisableTimeout
 
 # Auto-lock & suspend after idle timeout. Monitor disabled shortly beforehand via dpms.
-exec --no-startup-id $HOME/.config/i3/i3-fs-standby-daemon.py
+exec_always --no-startup-id $HOME/.config/i3/i3-fs-standby-daemon.py
 exec --no-startup-id \
   xautolock -notify 20 -notifier "$HOME/.config/i3/i3lock.sh notify" \
   -time $systemLockPrepareTimeout -locker "$HOME/.config/i3/i3lock.sh prepare" \
@@ -306,7 +306,7 @@ exec --no-startup-id \
   -detectsleep
 
 # handles X input reassignments when certain devices detected
-exec --no-startup-id $HOME/.config/i3/xinput-poll-daemon.sh
+exec_always --no-startup-id $HOME/.config/i3/xinput-poll-daemon.sh
 
 # Startup apps
 exec --no-startup-id nm-applet
