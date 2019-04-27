@@ -23,6 +23,10 @@
 # i3-save-tree --workspace 8 > ~/.config/i3/workspace-comms.json
 #     save layout trees for automating restore
 #
+# Enable bluetooth:
+#   sudo rfkill unblock bluetooth && sudo service bluetooth restart
+#   bluedevil-wizard
+#
 # :TODO:
 #
 # - does screen actually go off, or just goes dark?
