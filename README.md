@@ -17,6 +17,7 @@
     - Layout and boot app workspaces with a single keypress *(see "(C)ommunications" in config)*
     - Move windows left/right between workspaces and follow them to their destination
 - Window tabbing, program runner & command execution via [rofi](https://github.com/DaveDavenport/rofi)
+- [Compton](https://wiki.archlinux.org/index.php/Compton) for window compositing, to allow WebGL & overlay apps like [Peek](https://github.com/phw/peek) to work
 - Starts relevant utility apps (eg. Gnome calculator) in floating mode
 - Fancy lock screen (pixellated desktop with overlay)
 - Automatic lock & suspend:
@@ -51,11 +52,10 @@
 
     # install main packages
     sudo apt update
-    sudo apt install -y i3 rofi sox cpufrequtils xterm xautolock indicator-brightness
-    sudo pip install autorandr
+    sudo apt install -y i3 rofi sox cpufrequtils xterm xautolock compton indicator-brightness
+    sudo pip install autorandr i3ipc
 
     # other dependencies
-    pip install i3ipc
     wget https://github.com/acrisci/playerctl/releases/download/v2.0.1/playerctl-2.0.1_amd64.deb
     sudo dpkg -i playerctl-2.0.1_amd64.deb
 
