@@ -25,7 +25,6 @@
 #
 # Enable bluetooth:
 #   sudo rfkill unblock bluetooth && sudo service bluetooth restart
-#   bluedevil-wizard
 #
 # :TODO:
 #
@@ -253,6 +252,15 @@ mode "$mode_system" {
 bindsym $mod+Pause mode "$mode_system"
 bindsym $mod+Delete mode "$mode_system"
 bindsym $mod+l exec --no-startup-id $HOME/.config/i3/i3exit.sh lock, mode "default"
+
+# peripherals
+set $mode_peripherals Peripherals | (b)luetooth (v)ideo (s)ound
+mode "$mode_peripherals" {
+    bindsym b exec blueman-manager, mode "default"
+    bindsym v exec arandr, mode "default"
+    bindsym s exec pavucontrol, mode "default"
+}
+bindsym $mod+P mode "$mode_peripherals"
 
 # Quick app launcher
 set $mode_launcher Quicklaunch [1-0] | (C)ommunications

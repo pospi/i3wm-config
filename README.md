@@ -53,7 +53,7 @@
 
     # install main packages
     sudo apt update
-    sudo apt install -y i3 rofi sox cpufrequtils xterm xautolock compton nitrogen indicator-brightness xbacklight bluedevil pavucontrol
+    sudo apt install -y i3 rofi sox cpufrequtils xterm xautolock compton nitrogen indicator-brightness xbacklight arandr blueman pavucontrol
     sudo pip install autorandr i3ipc
 
     # other dependencies
