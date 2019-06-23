@@ -4,7 +4,6 @@
 
 - [Features](#features)
 - [Setup](#setup)
-    - [systemctl services](#systemctl-services)
 - [License](#license)
 
 <!-- /MarkdownTOC -->
@@ -23,6 +22,7 @@
 - Automatic lock & suspend:
     - Does not trigger when apps are fullscreen, which takes care of most video playback situations
     - Does not trigger when music or other media is playing (detection implemented via PulseAudio)
+- Battery status / low battery warnings
 - Automatic monitor profile configuration via `autorandr` (mod+F7 binding as final resort)
 - Management of screen backlight via hotkeys or tray icon
 - Script hooks for rebinding Xinput device buttons & keys when inserted
@@ -53,70 +53,31 @@
 
     # install main packages
     sudo apt update
-    sudo apt install -y i3 rofi sox cpufrequtils xterm xautolock compton nitrogen indicator-brightness xbacklight arandr blueman pavucontrol
+    sudo apt install -y i3 rofi sox cpufrequtils xterm xautolock compton nitrogen indicator-brightness xbacklight arandr blueman pavucontrol acpi
     sudo pip install autorandr i3ipc
 
     # other dependencies
     wget https://github.com/acrisci/playerctl/releases/download/v2.0.1/playerctl-2.0.1_amd64.deb
     sudo dpkg -i playerctl-2.0.1_amd64.deb
 
+    # integrate with systemd
+    mkdir -p $HOME/.config/systemd/user
+    systemctl --user enable $HOME/.config/i3/systemd/battery-check.service
+
+    sed "s/pospi/$USER/" $HOME/.config/i3/systemd/auto-monitorconf.service | sudo tee /etc/systemd/system/auto-monitorconf.service
+    sed "s/pospi/$USER/" $HOME/.config/i3/systemd/i3lock-suspend.service | sudo tee /etc/systemd/system/i3lock-suspend.service
+    sed "s/pospi/$USER/" $HOME/.config/i3/systemd/i3lock-resume.service | sudo tee /etc/systemd/system/i3lock-resume.service
+
+    sudo systemctl enable auto-monitorconf.service
+    sudo systemctl enable i3lock-suspend.service
+    sudo systemctl enable i3lock-resume.service
+
+    systemctl --user daemon-reload
+    systemctl --user start $HOME/.config/i3/systemd/battery-check.service
+    sudo systemctl daemon-reload
+
 You also need to put an image at `~/Pictures/lockscreen.png`, which will be overlaid at the bottom centre of your screen when the PC is locked; and another at `~/Pictures/wallpaper.png` for the background. Alternatively you can disable these features or edit to point to your own paths.
 
-### systemctl services
-
-It's far easier to wire everything into `systemctl` than it is to try to drive things the other way around. You will need these service files installed into `/etc/systemd/system/`. Replace `/home/pospi` with the path to your own homedir.
-
-`auto-monitorconf.service`:
-
-    [Unit]
-    Description=Autoconfigure monitor inputs
-    After=suspend.target
-
-    [Service]
-    User=pospi
-    Type=oneshot
-    Environment=DISPLAY=:0
-    ExecStart=/home/pospi/.config/i3/auto-monitorconf.sh resume
-
-    [Install]
-    WantedBy=suspend.target
-
-`i3lock-suspend.service`:
-
-    [Unit]
-    Description=i3lock on suspend
-    Before=sleep.target
-
-    [Service]
-    User=pospi
-    Type=forking
-    Environment=DISPLAY=:0
-    ExecStart=/home/pospi/.config/i3/i3lock.sh suspend
-
-    [Install]
-    WantedBy=sleep.target
-
-
-`i3lock-resume.service`:
-
-    [Unit]
-    Description=i3lock on resume
-    After=suspend.target
-
-    [Service]
-    User=pospi
-    Type=forking
-    Environment=DISPLAY=:0
-    ExecStart=/home/pospi/.config/i3/i3lock.sh resume
-
-    [Install]
-    WantedBy=suspend.target
-
-Now that those are set up, enable them:
-
-    sudo systemctl enable auto-monitorconf
-    sudo systemctl enable i3lock-suspend
-    sudo systemctl enable i3lock-resume
 
 ## License
 
