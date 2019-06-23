@@ -1,0 +1,12 @@
+[Unit]
+Description=i3lock on resume
+After=suspend.target
+
+[Service]
+User=pospi
+Type=forking
+Environment=DISPLAY=:0
+ExecStart=/home/pospi/.config/i3/i3lock.sh resume
+
+[Install]
+WantedBy=suspend.target

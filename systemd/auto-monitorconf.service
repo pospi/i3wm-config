@@ -1,0 +1,12 @@
+[Unit]
+Description=Autoconfigure monitor inputs
+After=suspend.target
+
+[Service]
+User=pospi
+Type=oneshot
+Environment=DISPLAY=:0
+ExecStart=/home/pospi/.config/i3/auto-monitorconf.sh resume
+
+[Install]
+WantedBy=suspend.target
