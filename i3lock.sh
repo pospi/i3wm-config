@@ -33,7 +33,7 @@ enableMonitorPowerSaving() {
 # detect if media is playing
 isMediaPlaying() {
   mediaStatus=$(pacmd list-sink-inputs | grep state: | cut -d " " -f 2)
-  if [[ $mediaStatus == "RUNNING" ]]; then
+  if [[ $mediaStatus == *"RUNNING"* ]]; then
     return 0
   fi
   return 1
