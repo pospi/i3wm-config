@@ -231,6 +231,7 @@ mode "resize" {
 for_window [class="floatingWin"] floating enable,move position center
 for_window [window_role="gnome-calculator"] floating enable
 for_window [class="Peek"] floating enable,resize set 640 480,move position center
+for_window [window_role="GtkFileChooserDialog"] resize set 2060 1254,move position center
 
 # system power & lock commands
 set $mode_system System (p) perfmode, (l) lock, (e) logout, (s) suspend, (r) reboot, (Shift+s) shutdown
