@@ -23,8 +23,9 @@
 # i3-save-tree --workspace 8 > ~/.config/i3/workspace-comms.json
 #     save layout trees for automating restore
 #
-# Enable bluetooth:
-#   sudo rfkill unblock bluetooth && sudo service bluetooth restart
+# Change timezone:
+#   timedatectl list-timezones
+#   sudo timedatectl set-timezone XXXX
 #
 # :TODO:
 #
