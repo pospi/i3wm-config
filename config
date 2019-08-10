@@ -256,6 +256,9 @@ bindsym $mod+l exec --no-startup-id $HOME/.config/i3/i3exit.sh lock, mode "defau
 # peripherals
 set $mode_peripherals Peripherals | (b)luetooth (v)ideo (s)ound
 mode "$mode_peripherals" {
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+
     bindsym b exec blueman-manager, mode "default"
     bindsym v exec arandr, mode "default"
     bindsym s exec pavucontrol, mode "default"
@@ -265,6 +268,9 @@ bindsym $mod+P mode "$mode_peripherals"
 # keepalive
 set $mode_autolock Autolock | (y)es (n)o
 mode "$mode_autolock" {
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+
     bindsym y exec --no-startup-id $HOME/.config/i3/set-autolock.sh 1, mode "default"
     bindsym n exec --no-startup-id $HOME/.config/i3/set-autolock.sh 0, mode "default"
 }
