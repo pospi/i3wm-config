@@ -311,7 +311,7 @@ bar {
 for_window [class="floatingWin"] floating enable,move position center
 for_window [window_role="gnome-calculator"] floating enable
 for_window [class="Peek"] floating enable,resize set 640 480,move position center
-for_window [window_role="GtkFileChooserDialog"] resize set 2060 1254,move position center
+for_window [window_role="GtkFileChooserDialog"] resize set 1200 800,move position center
 
 # Set a background image (repeat after delay to be sure, X takes time to boot sometimes)
 exec --no-startup-id sleep 1; nitrogen --set-auto $HOME/Pictures/wallpaper.png; sleep 5; nitrogen --set-auto $HOME/Pictures/wallpaper.png
