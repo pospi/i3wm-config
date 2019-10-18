@@ -22,6 +22,8 @@
 #     determine symbol names for X11 inputs
 # i3-save-tree --workspace 8 > ~/.config/i3/workspace-comms.json
 #     save layout trees for automating restore
+# tail -f -n10000 /var/log/syslog | rg i3
+#     watch syslog for `logger` command output used in debugging scripts
 #
 # Change timezone:
 #   timedatectl list-timezones
@@ -29,8 +31,11 @@
 #
 # :TODO:
 #
+# - FS daemon not working on firefox detection
+# - finish configs for xautorandr
+#   - (also sound) https://github.com/ruudud/i3wm-scripts/blob/master/hdmi-switch/hdmi-switch.sh
 # - does screen actually go off, or just goes dark?
-# - a desktop & wallpaper
+# - probably locking in un/interactive mode is interrupting resume lock & firing it twice IF triggered by systemd and not xautolock
 #
 
 # :DUPE: monitor-timeout-delay
