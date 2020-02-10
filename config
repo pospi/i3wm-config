@@ -312,6 +312,9 @@ bar {
   position bottom
 }
 
+# initial state
+workspace_layout tabbed
+
 # automated window floating by class
 for_window [class="floatingWin"] floating enable,move position center
 for_window [window_role="gnome-calculator"] floating enable
