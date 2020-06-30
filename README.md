@@ -62,7 +62,6 @@
 
     # integrate with systemd
     mkdir -p $HOME/.config/systemd/user
-    systemctl --user enable $HOME/.config/i3/systemd/battery-check.service
 
     sed "s/pospi/$USER/" $HOME/.config/i3/systemd/auto-monitorconf.service | sudo tee /etc/systemd/system/auto-monitorconf.service
     sed "s/pospi/$USER/" $HOME/.config/i3/systemd/i3lock-suspend.service | sudo tee /etc/systemd/system/i3lock-suspend.service
@@ -72,8 +71,12 @@
     sudo systemctl enable i3lock-suspend.service
     sudo systemctl enable i3lock-resume.service
 
+    pushd $HOME/.config/i3/systemd/
+        systemctl --user enable battery-check.service
+        systemctl --user start battery-check.service
+    popd
+    
     systemctl --user daemon-reload
-    systemctl --user start $HOME/.config/i3/systemd/battery-check.service
     sudo systemctl daemon-reload
 
 You also need to put an image at `~/Pictures/lockscreen.png`, which will be overlaid at the bottom centre of your screen when the PC is locked; and another at `~/Pictures/wallpaper.png` for the background. Alternatively you can disable these features or edit to point to your own paths.
