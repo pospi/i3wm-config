@@ -59,6 +59,9 @@ font pango:monospace 8
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
 
+# initial state
+workspace_layout default
+
 # misc config
 #focus_wrapping no
 mouse_warping none
@@ -311,9 +314,6 @@ bar {
   #tray_output primary
   position bottom
 }
-
-# initial state
-workspace_layout tabbed
 
 # automated window floating by class
 for_window [class="floatingWin"] floating enable,move position center
