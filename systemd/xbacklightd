@@ -1,0 +1,27 @@
+#!/bin/bash
+#
+# (via https://stackoverflow.com/a/52095702/141881)
+#
+MAX=$(cat "/sys/class/backlight/intel_backlight/max_brightness")
+MIN=10
+set -e
+file="/sys/class/backlight/intel_backlight/brightness"
+current=$(cat "$file")
+new="$current"
+val=$(printf "%.0f" $(echo "$MAX*0.1" | bc))
+if [ "$1" = "up" ]; then
+    new=$(( current + $val ))
+elif [ "$1" = "down" ]; then
+    new=$(( current - $val ))
+else
+    echo "Expected 'up' or 'down' as argument to adjust display brightness."
+    echo "Works on Intel graphics cards only (which don't play nice with xbacklight)."
+    exit 1
+fi
+if [ $new -gt $MAX ]; then
+    new=$MAX
+elif [ $new -lt $MIN ]; then
+    new=$MIN
+fi
+printf "%.0f%%\n" $(echo "$new/$MAX*100" | bc -l)
+echo $new > "$file"

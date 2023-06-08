@@ -68,16 +68,18 @@
     sed "s/pospi/$USER/" $HOME/.config/i3/systemd/auto-monitorconf.service | sudo tee /etc/systemd/system/auto-monitorconf.service
     sed "s/pospi/$USER/" $HOME/.config/i3/systemd/i3lock-suspend.service | sudo tee /etc/systemd/system/i3lock-suspend.service
     sed "s/pospi/$USER/" $HOME/.config/i3/systemd/i3lock-resume.service | sudo tee /etc/systemd/system/i3lock-resume.service
+    sed "s/pospi/$USER/" $HOME/.config/i3/systemd/xbacklightd.service | sudo tee /etc/systemd/system/xbacklight@.service
 
     sudo systemctl enable auto-monitorconf.service
     sudo systemctl enable i3lock-suspend.service
     sudo systemctl enable i3lock-resume.service
+    sudo systemctl enable xbacklight@.service
 
     pushd $HOME/.config/i3/systemd/
         systemctl --user enable battery-check.service
         systemctl --user start battery-check.service
     popd
-    
+
     systemctl --user daemon-reload
     sudo systemctl daemon-reload
 

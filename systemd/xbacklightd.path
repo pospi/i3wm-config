@@ -1,0 +1,8 @@
+[Unit]
+Description=Monitor backlight file for changes
+
+[Path]
+PathModified=/sys/class/backlight/intel_backlight/brightness
+
+[Install]
+WantedBy=default.target

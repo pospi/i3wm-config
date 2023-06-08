@@ -1,0 +1,10 @@
+[Unit]
+Description=Change backlight setting %I
+
+[Service]
+Type=oneshot
+ExecStart=/home/pospi/.config/i3/systemd/xbacklightd "%i"
+Restart=no
+
+[Install]
+WantedBy=multi-user.target
