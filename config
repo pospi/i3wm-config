@@ -298,6 +298,7 @@ mode "$mode_launcher" {
   bindsym 3 exec subl, mode "default"
   bindsym 4 exec firefox, mode "default"
   bindsym 5 exec rhythmbox, mode "default"
+  bindsym 0 exec Logseq, mode "default"
 
   # app groups
   bindsym C \
